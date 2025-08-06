@@ -1,0 +1,1013 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden -mt-20 pt-20">
+        <!-- Slideshow Background -->
+        <div class="slideshow">
+            <div class="slide slide-1 active"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+            <div class="slide slide-4"></div>
+        </div>
+        
+        <!-- Slideshow Controls -->
+        <div class="absolute bottom-8 right-8 z-20 hidden md:flex space-x-2">
+            <button class="slide-dot active bg-white/50 hover:bg-white/80 w-3 h-3 rounded-full transition-all duration-300" data-slide="0"></button>
+            <button class="slide-dot bg-white/30 hover:bg-white/80 w-3 h-3 rounded-full transition-all duration-300" data-slide="1"></button>
+            <button class="slide-dot bg-white/30 hover:bg-white/80 w-3 h-3 rounded-full transition-all duration-300" data-slide="2"></button>
+            <button class="slide-dot bg-white/30 hover:bg-white/80 w-3 h-3 rounded-full transition-all duration-300" data-slide="3"></button>
+        </div>
+        
+        <!-- Enhanced Dark Overlay with Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/60 to-black/60"></div>
+        
+        <!-- Floating Elements (Hidden on Mobile) -->
+        <div class="absolute top-20 left-10 animate-float z-10 hidden md:block">
+            <div class="w-16 h-16 bg-school-yellow rounded-full opacity-20"></div>
+        </div>
+        <div class="absolute bottom-32 right-20 animate-bounce-slow z-10 hidden md:block">
+            <div class="w-12 h-12 bg-school-green rounded-full opacity-30"></div>
+        </div>
+        <div class="absolute top-40 right-32 animate-float z-10 hidden md:block" style="animation-delay: -2s;">
+            <div class="w-20 h-20 bg-pink-400 rounded-full opacity-20"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-9xl mx-auto pt-20 sm:pt-28 lg:pt-36 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+                <!-- Left: Hero Text Content -->
+                <div class="text-center md:text-left text-white">
+                    <h1 class="font-semibold text-3xl sm:text-4xl lg:text-7xl mb-8 sm:mb-10 lg:mb-12 animate-fade-in"
+                        style="color: #FFFFFF; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); font-family: 'Noto Sans Devanagari', 'Mukta', 'Khand', Arial, sans-serif; letter-spacing: 0.04em;">
+                       भानुभक्त क्याम्पसमा<br><br>
+                        <span>यहाँलाई स्वागत छ </span>
+                    </h1>
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mb-12 animate-fade-in-delay-2">
+                        <a href="{% url 'base:admission' %}" class="bg-gradient-to-r from-school-blue to-school-purple text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 animate-card-float">
+                            Admission <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="{% url 'base:contact' %}" class="bg-white/10 backdrop-blur-sm text-white px-8 py-3 rounded-full font-semibold hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                            Contact Us <i class="fas fa-envelope ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Right: Empty Column -->
+                <div></div>
+            </div>
+                    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
+                        <div class="w-8 h-12 border-2 border-white rounded-full flex justify-center">
+                            <div class="w-1 h-3 bg-white rounded-full mt-2 animate-scroll"></div>
+                        </div>
+                    </div>
+
+        </div>
+    </section>
+    <!-- Stats Section -->
+    <section class="py-16 bg-gradient-to-r from-school-blue to-school-purple relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-20 h-20 bg-white rounded-full animate-bounce-slow"></div>
+            <div class="absolute top-32 right-20 w-16 h-16 bg-white rounded-full animate-float"></div>
+            <div class="absolute bottom-20 left-32 w-12 h-12 bg-white rounded-full animate-card-float"></div>
+            <div class="absolute bottom-32 right-10 w-24 h-24 bg-white rounded-full animate-bounce-slow" style="animation-delay: -1s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="text-white scroll-animate stagger-1 transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                        <h3 class="text-5xl font-bold mb-3 counter" data-target="25">0+</h3>
+                        <p class="text-blue-100 text-lg">Dedicated Educators</p>
+                    </div>
+                </div>
+                <div class="text-white scroll-animate stagger-2 transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                        <h3 class="text-5xl font-bold mb-3 counter" data-target="38">0+</h3>
+                        <p class="text-blue-100 text-lg">Years Average Experience</p>
+                    </div>
+                </div>
+                <div class="text-white scroll-animate stagger-3 transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                        <h3 class="text-5xl font-bold mb-3 counter" data-target="100">0%</h3>
+                        <p class="text-blue-100 text-lg">Committed to Excellence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-14 bg-gradient-to-br from-gray-50 to-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-playful text-3xl sm:text-4xl text-black font-medium mb-6">ABOUT US</h2>
+            </div>
+            
+            <div class="md:grid md:grid-cols-2 md:gap-12 items-center">
+                <div class="mb-8 md:mb-0">
+                    <img src="{% static 'base/media/about.jpg' %}" alt="About Us Image" class="w-full h-auto rounded-lg shadow-xl">
+                </div>
+                <div>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Bhanubhakta Multiple Campus established in 2044 B.S., is a community-based academic institution located at Shuklagandaki-5, Belchautara, Tanahun, affiliated with Tribhuvan University. Named after the great poet Bhanubhakta Acharya, the campus has been a center of academic excellence for over three decades, offering undergraduate programs in Bachelor of Business Studies (BBS), Bachelor of Education (B.Ed.), and postgraduate programs like Master of Arts (MA). Dedicated to providing quality, affordable, and accessible education.
+                    </p>
+                    <a href="{% url 'base:about' %}" class="inline-block bg-[#de1c3c] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#c41a2f] transition-colors shadow-lg">
+                        Read More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Notices Section -->
+    <section class="py-14 bg-gradient-to-br from-slate-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-playful text-3xl sm:text-4xl text-black font-medium mb-6">Latest Updates</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    Stay informed with our latest news and important notices
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Latest News -->
+                <div>
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="text-2xl font-bold text-gray-800">Latest News</h3>
+                        <a href="{% url 'base:news' %}" class="text-school-blue hover:text-school-blue/80 font-medium">
+                            View All <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="space-y-6">
+                        {% for news in latest_news %}
+                        <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                            {% if news.image %}
+                            <img src="{{ news.image.url }}" alt="{{ news.title }}" class="w-full h-48 object-cover">
+                            {% endif %}
+                            <div class="p-6">
+                                <h4 class="font-bold text-lg text-gray-800 mb-2">{{ news.title }}</h4>
+                                <p class="text-gray-600 mb-4">{{ news.content|truncatewords:20 }}</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-500">{{ news.published_date|date:"M d, Y" }}</span>
+                                    <a href="{% url 'base:news_detail' news.pk %}" class="text-school-blue hover:text-school-blue/80 font-medium">
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                            <i class="fas fa-newspaper text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">No news available at the moment.</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Latest Notices -->
+                <div>
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="text-2xl font-bold text-gray-800">Important Notices</h3>
+                        <a href="{% url 'base:notice' %}" class="text-school-blue hover:text-school-blue/80 font-medium">
+                            View All <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="space-y-4">
+                        {% for notice in latest_notices %}
+                        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-lg text-gray-800 mb-2">{{ notice.title }}</h4>
+                                    <p class="text-gray-600 mb-3">{{ notice.content|truncatewords:15 }}</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-500">{{ notice.published_date|date:"M d, Y" }}</span>
+                                        {% if notice.file %}
+                                        <a href="{{ notice.file.url }}" target="_blank" class="text-red-600 hover:text-red-700 text-sm">
+                                            <i class="fas fa-file-pdf mr-1"></i>Download PDF
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <a href="{% url 'base:notice_detail' notice.pk %}" class="ml-4 text-school-blue hover:text-school-blue/80">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+                            <i class="fas fa-bullhorn text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">No notices available at the moment.</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-14 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 scroll-animate">
+                <h2 class="font-playful text-3xl sm:text-4xl text-black font-medium mb-6">Our Programs</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    Comprehensive programs designed to support your academic journey and career development.
+                </p>
+            </div>
+            
+            {% if courses %}
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {% for course in courses %}
+                    <div class="bg-white rounded-3xl shadow-lg overflow-hidden card-hover group scroll-animate stagger-{{ forloop.counter|add:0 }}">
+                        <!-- Course Image -->
+                        <div class="relative overflow-hidden">
+                            {% if course.image %}
+                            <img src="{{ course.image.url }}" 
+                                 alt="{{ course.name }}" 
+                                 class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                            {% else %}
+                            <div class="w-full h-48 bg-gradient-to-br from-school-blue to-school-purple flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-graduation-cap text-4xl mb-2"></i>
+                                    <p class="text-sm font-medium">{{ course.get_level_display }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            <!-- Level Badge -->
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-white/90 backdrop-blur-sm text-school-blue px-3 py-1 rounded-full text-xs font-semibold">
+                                    {{ course.get_level_display }}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <!-- Course Details -->
+                        <div class="p-6">
+                            <h3 class="font-playful text-xl text-gray-800 mb-2 group-hover:text-school-blue transition-colors duration-300">
+                                {{ course.name }}
+                            </h3>
+                            {% if course.description %}
+                            <p class="text-gray-600 text-sm line-clamp-3 mb-4">
+                                {{ course.description|truncatewords:20 }}
+                            </p>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Decorative Element -->
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-full p-2">
+                                <i class="fas fa-book text-white text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+    </section>
+
+    <!-- Message from the Campus Chief -->
+    <section class="py-12 bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 scroll-animate">
+                <h2 class="font-playful text-3xl sm:text-4xl text-black font-medium mb-6">Message from the Campus Chief</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    Leadership that inspires excellence and nurtures growth
+                </p>
+            </div>
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover scroll-animate">
+                <div class="grid md:grid-cols-2 gap-2 md:gap-8 xl:gap-16">
+                    <!-- Principal's Image -->
+                    <div class="relative h-[350px] md:h-[450px] flex items-center justify-center">
+                        <div class="w-48 md:w-80 h-48 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl animate-card-float">
+                            <img src="{% static 'base/media/chief.png' %}" 
+                                 alt="Chief Ramesh Bahadur Adhikari" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <!-- chief's Message -->
+                    <div class="p-6 md:p-12 flex flex-col justify-center">
+                        <div class="relative mb-6 md:mb-8">
+                            <div class="absolute -left-4 -top-4 text-4xl md:text-6xl text-school-blue opacity-20">"</div>
+                            <p class="text-gray-700 text-base md:text-xl leading-relaxed relative z-10">
+                               Welcome to Bhanubhakta Campus, Tanahun. Our campus is committed to offering a supportive environment and quality education that helps students realize their fullest potential. We focus on academic excellence, personal growth, and ethical values to prepare our graduates for meaningful roles in society.
+                            </p>
+                            <div class="absolute -right-4 -bottom-4 text-4xl md:text-6xl text-school-blue opacity-20">"</div>
+                        </div>
+                        <div class="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-gray-100">
+                            <p class="text-gray-600 italic text-sm md:text-base">
+                                "Thank you for trusting us with your educational journey. Together, let’s build a future of knowledge, integrity, and success."
+                            </p>
+                            <p class="text-school-blue font-semibold mt-2 md:mt-3 text-sm md:text-base">- Ramesh Bahadur Adhikari</p>
+                            <p class="text-gray-600 text-xs md:text-sm">Campus Chief</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="py-14 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 scroll-animate">
+                <h2 class="font-playful text-3xl sm:text-4xl text-black font-medium mb-6">Photo Gallery</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    Take a peek into our vibrant school life through these special moments
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                {% for gallery_image in gallery_images %}
+                {% if gallery_image.image %}
+                <div class="relative group overflow-hidden rounded-2xl card-hover scroll-animate stagger-{{ forloop.counter|add:0 }}">
+                    <img src="{{ gallery_image.image.url }}" alt="{{ gallery_image.title }}" class="aspect-w-1 aspect-h-1 rounded-2xl w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <p class="text-white text-sm">{{ gallery_image.title }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Alumni Section -->
+    <section class="py-14 bg-gradient-to-br from-pink-50 to-rose-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 scroll-animate">
+                <h2 class="font-playful text-3xl sm:text-4xl text-black font-medium mb-6">Our Alumni</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    Meet our successful graduates who are making a difference in their fields
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                {% for alumnus in alumni %}
+                <div class="bg-white rounded-3xl p-8 shadow-lg card-hover relative overflow-hidden scroll-animate stagger-{{ forloop.counter|add:0 }}">
+                    <!-- Background gradient accent -->
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-school-blue to-school-purple rounded-bl-full opacity-10"></div>
+                    
+                    <div class="flex items-center mb-6">
+                        {% if alumnus.photo %}
+                        <img src="{{ alumnus.photo.url }}" alt="{{ alumnus.full_name }}" class="w-16 h-16 rounded-full object-cover border-4 border-school-blue/20 animate-card-float">
+                        {% else %}
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-school-blue to-school-purple flex items-center justify-center animate-card-float">
+                            <span class="text-white font-bold text-xl">{{ alumnus.full_name|first }}</span>
+                        </div>
+                        {% endif %}
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-800 text-lg">{{ alumnus.full_name }}</h4>
+                            <p class="text-school-blue font-semibold text-sm">{{ alumnus.present_post }}</p>
+                            <p class="text-gray-500 text-xs">Batch: {{ alumnus.batch_year }}</p>
+                        </div>
+                    </div>
+                    
+                    {% if alumnus.message %}
+                    <p class="text-gray-600 italic leading-relaxed">{{ alumnus.message|truncatewords:25 }}</p>
+                    {% endif %}
+                    
+                    <!-- Success indicator -->
+                    <div class="mt-6 flex items-center justify-between">
+                        <div class="flex items-center text-school-green">
+                            <i class="fas fa-graduation-cap mr-2"></i>
+                            <span class="text-sm font-medium">Alumni</span>
+                        </div>
+                        <div class="text-school-yellow">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                {% endfor %}
+            </div>
+            <!-- Call to action for alumni -->
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-6">Are you a Bhanubhakta Campus alumnus? We'd love to hear from you!</p>
+                <a href="{% url 'base:contact' %}" class="bg-gradient-to-r from-school-blue to-school-purple text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-envelope mr-2"></i>
+                    Share Your Story
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-14 bg-gradient-to-br from-rose-50 to-orange-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-playful text-3xl sm:text-4xl text-black font-medium mb-6">Get in Touch</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    We'd love to hear from you. Reach out to us for any inquiries about admissions, programs, or general information.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Send Us a Message</h3>
+                    
+                    <!-- Display messages -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="mb-6 p-4 rounded-lg {% if message.tags == 'success' %}bg-green-100 text-green-700 border border-green-300{% elif message.tags == 'error' %}bg-red-100 text-red-700 border border-red-300{% elif message.tags == 'warning' %}bg-yellow-100 text-yellow-700 border border-yellow-300{% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <form method="POST" class="space-y-6">
+                        {% csrf_token %}
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="{{ contact_form.name.id_for_label }}" class="block text-gray-700 text-sm font-medium mb-2">
+                                    <i class="fas fa-user mr-2"></i>Full Name
+                                </label>
+                                {{ contact_form.name }}
+                                {% if contact_form.name.errors %}
+                                    <div class="text-red-600 text-sm mt-1">{{ contact_form.name.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <label for="{{ contact_form.email.id_for_label }}" class="block text-gray-700 text-sm font-medium mb-2">
+                                    <i class="fas fa-envelope mr-2"></i>Email Address
+                                </label>
+                                {{ contact_form.email }}
+                                {% if contact_form.email.errors %}
+                                    <div class="text-red-600 text-sm mt-1">{{ contact_form.email.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="{{ contact_form.phone.id_for_label }}" class="block text-gray-700 text-sm font-medium mb-2">
+                                <i class="fas fa-phone mr-2"></i>Phone Number (Optional)
+                            </label>
+                            {{ contact_form.phone }}
+                            {% if contact_form.phone.errors %}
+                                <div class="text-red-600 text-sm mt-1">{{ contact_form.phone.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div>
+                            <label for="{{ contact_form.subject.id_for_label }}" class="block text-gray-700 text-sm font-medium mb-2">
+                                <i class="fas fa-tag mr-2"></i>Subject
+                            </label>
+                            {{ contact_form.subject }}
+                            {% if contact_form.subject.errors %}
+                                <div class="text-red-600 text-sm mt-1">{{ contact_form.subject.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div>
+                            <label for="{{ contact_form.message.id_for_label }}" class="block text-gray-700 text-sm font-medium mb-2">
+                                <i class="fas fa-comment-alt mr-2"></i>Message
+                            </label>
+                            {{ contact_form.message }}
+                            {% if contact_form.message.errors %}
+                                <div class="text-red-600 text-sm mt-1">{{ contact_form.message.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-gradient-to-r from-school-blue to-school-purple text-white py-4 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-lg flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <!-- Contact Cards -->
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Our Location</h3>
+                            <p class="text-gray-600">Shuklagandaki-4,Tanahun<br>Nepal</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Phone Number</h3>
+                            <p class="text-gray-600">065-571240</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Email Address</h3>
+                            <p class="text-gray-600 break-all">bhanubhaktacampus240@gmail.com</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Office Hours</h3>
+                            <p class="text-gray-600">Sunday - Friday<br>9:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Connect With Us</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity bg-[#1877f3] text-white text-xl" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity bg-[#25d366] text-white text-xl" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity bg-[#e4405f] text-white text-xl" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity bg-[#ff0000] text-white text-xl" title="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity bg-[#1da1f2] text-white text-xl" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity bg-[#0077b5] text-white text-xl" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Map -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                        <div class="relative">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3521.7019428034937!2d84.07884157471405!3d28.033584311028488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995bb203f6a162f%3A0xc6531480293f2522!2sBhanu%20Bhakta%20Multiple%20Campus!5e0!3m2!1sen!2snp!4v1754355430364!5m2!1sen!2snp" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        @keyframes scroll {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(0); }
+        }
+        .animate-scroll {
+            animation: scroll 2s infinite;
+        }
+
+        /* Enhanced Card Animations */
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes rotateY {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* Animation Classes */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: gentlePulse 2s ease-in-out infinite;
+        }
+
+        .animate-card-float {
+            animation: cardFloat 6s ease-in-out infinite;
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-fade-left {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-fade-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        .shimmer-effect {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        .rotate-slow {
+            animation: rotateY 20s linear infinite;
+        }
+
+        /* Scroll-triggered animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animation delays */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+
+        /* Counter Animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px) scale(0.8); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .counter {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .counter.counting {
+            animation: countUp 0.6s ease-out;
+        }
+
+        .counter.finished {
+            animation: pulse 0.6s ease-in-out;
+        }
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+            transform: scale(1.05);
+        }
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Slide Indicators */
+        .slide-dot {
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+        }
+        .slide-dot.active {
+            background: rgba(255, 255, 255, 0.8) !important;
+            transform: scale(1.2);
+        }
+        
+        @media (max-width: 640px) {
+            .slide {
+                background-position: center center;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set background images for slides
+            const backgroundImages = [
+                '{% static "base/media/bg1.jpg" %}',
+                '{% static "base/media/bg2.jpg" %}',
+                '{% static "base/media/bg3.jpg" %}',
+                '{% static "base/media/bg4.jpg" %}'
+            ];
+            
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach((slide, index) => {
+                slide.style.backgroundImage = `url('${backgroundImages[index]}')`;
+            });
+
+            // Slideshow functionality
+            const slideDots = document.querySelectorAll('.slide-dot');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                // Get fresh reference to slides after background images are set
+                const slides = document.querySelectorAll('.slide');
+                const slideDots = document.querySelectorAll('.slide-dot');
+                
+                // Remove active class from all slides and dots
+                slides.forEach(slide => slide.classList.remove('active'));
+                slideDots.forEach(dot => dot.classList.remove('active'));
+                
+                // Add active class to current slide and dot
+                slides[index].classList.add('active');
+                slideDots[index].classList.add('active');
+                
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                const slides = document.querySelectorAll('.slide');
+                const nextIndex = (currentSlide + 1) % slides.length;
+                showSlide(nextIndex);
+            }
+
+            function startSlideshow() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+
+            function stopSlideshow() {
+                clearInterval(slideInterval);
+            }
+
+            // Initialize slideshow
+            startSlideshow();
+
+            // Add click handlers to slide dots
+            slideDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                    stopSlideshow();
+                    startSlideshow(); // Restart timer
+                });
+            });
+
+            // Pause slideshow on hover
+            const slideshowContainer = document.querySelector('.slideshow');
+            if (slideshowContainer) {
+                slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+                slideshowContainer.addEventListener('mouseleave', startSlideshow);
+            }
+
+            // Scroll Animation Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        
+                        // Check if this element contains a counter
+                        const counter = entry.target.querySelector('.counter');
+                        if (counter && !counter.classList.contains('counted')) {
+                            animateCounter(counter);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Counter Animation Function
+            function animateCounter(element) {
+                const target = parseInt(element.dataset.target);
+                const suffix = element.textContent.includes('+') ? '+' : 
+                              element.textContent.includes('%') ? '%' : '';
+                let current = 0;
+                const increment = target / 120; // Slower animation - doubled from 60 to 120
+                
+                element.classList.add('counting');
+                
+                // Add delay before starting the counter
+                setTimeout(() => {
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                            element.classList.add('counted'); // Mark as counted
+                            element.classList.remove('counting');
+                            element.classList.add('finished');
+                            
+                            // Remove finished class after animation
+                            setTimeout(() => {
+                                element.classList.remove('finished');
+                            }, 600);
+                        }
+                        element.textContent = Math.floor(current) + suffix;
+                    }, 50); // Slower update - changed from 30ms to 50ms for smoother animation
+                }, 1000); // Add 1000ms delay before starting counter animation
+            }
+
+            // Observe all scroll-animate elements
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Also observe counter elements directly
+            document.querySelectorAll('.counter').forEach(counter => {
+                observer.observe(counter.parentElement);
+            });
+
+            // Add gentle floating animation to cards on hover
+            document.querySelectorAll('.card-hover').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Modal functionality
+            const modal = document.getElementById('splashModal');
+            const modalContent = document.getElementById('modalContent');
+            const closeBtn = document.getElementById('closeModal');
+            
+            // Initialize modal as hidden
+            if (modal) {
+                modal.style.display = 'none';
+            }
+            
+            // Check if user has seen the popup before
+            const hasSeenPopup = localStorage.getItem('vedvyasSplashSeen');
+            
+            // Only show modal if user hasn't seen it before
+            if (!hasSeenPopup && modal) {
+                setTimeout(function() {
+                    modal.style.display = 'flex';
+                    document.body.classList.add('modal-open');
+                    
+                    // Trigger entrance animation
+                    setTimeout(function() {
+                        modalContent.classList.add('modal-enter');
+                    }, 100);
+                }, 1000); // Show after 1 second
+            }
+            
+            // Close modal function
+            function closeModal() {
+                if (!modal || !modalContent) return;
+                
+                modalContent.classList.remove('modal-enter');
+                modalContent.classList.add('modal-exit');
+                
+                // Mark that user has seen the popup
+                localStorage.setItem('vedvyasSplashSeen', 'true');
+                
+                setTimeout(function() {
+                    modal.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                    modalContent.classList.remove('modal-exit');
+                }, 300);
+            }
+            
+            // Close button click
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeModal);
+            }
+            
+            // Close on background click
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+            
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+                    closeModal();
+                }
+            });
+            
+            // Auto-close after 8 seconds (only if modal is shown)
+            if (!hasSeenPopup && modal) {
+                setTimeout(function() {
+                    if (modal.style.display === 'flex') {
+                        closeModal();
+                    }
+                }, 8000);
+            }
+        });
+    </script>
+
+    <!-- Splash Image Popup Modal -->
+    <div id="splashModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 transition-opacity duration-300">
+        <div class="relative max-w-4xl max-h-[90vh] mx-4 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-300 scale-95 opacity-0" id="modalContent">
+            <!-- Close Button -->
+            <button id="closeModal" class="absolute top-4 right-4 z-10 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 hover:text-red-600 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-200 shadow-lg hover:shadow-xl">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+            
+            <!-- Image Container -->
+            <div class="relative">
+                {% if splash_images %}
+                <img src="{{ splash_images.0.image.url }}" alt="{{ splash_images.0.title|default:'Welcome to Vedvyas School' }}" class="w-full h-auto max-h-[90vh] object-cover">
+                {% else %}
+                <img src="{% static 'base/media/splash.jpg' %}" alt="Welcome to Vedvyas School" class="w-full h-auto max-h-[90vh] object-cover">
+                {% endif %}
+                
+                <!-- Overlay with School Info -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end">
+                    <div class="p-8 text-white">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-2">
+                            {% if splash_images %}{{ splash_images.0.title }}{% else %}Welcome to Vedvyas School{% endif %}
+                        </h2>
+                        <p class="text-lg md:text-xl opacity-90">Nurturing Tomorrow's Leaders</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Modal Animation Styles */
+        .modal-enter {
+            animation: modalEnter 0.5s ease-out forwards;
+        }
+        
+        .modal-exit {
+            animation: modalExit 0.3s ease-in forwards;
+        }
+        
+        @keyframes modalEnter {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        @keyframes modalExit {
+            from {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+        }
+        
+        /* Prevent body scroll when modal is open */
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+
+{% endblock %}

@@ -1,0 +1,471 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-50 to-school-purple">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="font-playful text-4xl sm:text-5xl lg:text-6xl text-white mb-6">About Us</h1>
+            <p class="text-xl text-white/90 max-w-3xl mx-auto">
+                Learn more about Bhanubhakta Multiple Campus, our mission, vision, and the values that drive us forward.
+            </p>
+        </div>
+    </section>
+    <!-- Main Content with Side Navigation -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-4 gap-12">
+                <!-- Side Navigation -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-20">
+                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Quick Navigation</h3>
+                            <nav class="space-y-2">
+                                <a href="#introduction" class="block px-4 py-2 text-gray-600 hover:text-school-blue hover:bg-white rounded-lg transition-colors">Introduction</a>
+                                <a href="#campus-chief" class="block px-4 py-2 text-gray-600 hover:text-school-blue hover:bg-white rounded-lg transition-colors">Campus Chief Message</a>
+                                <a href="#chairman" class="block px-4 py-2 text-gray-600 hover:text-school-blue hover:bg-white rounded-lg transition-colors">Chairman Message</a>
+                                <a href="#mission-vision" class="block px-4 py-2 text-gray-600 hover:text-school-blue hover:bg-white rounded-lg transition-colors">Mission & Vision</a>
+                                <a href="#strategic-plan" class="block px-4 py-2 text-gray-600 hover:text-school-blue hover:bg-white rounded-lg transition-colors">Strategic Plan</a>
+                                <a href="#policy-motto" class="block px-4 py-2 text-gray-600 hover:text-school-blue hover:bg-white rounded-lg transition-colors">Policy & Motto</a>
+                                <a href="#programs" class="block px-4 py-2 text-gray-600 hover:text-school-blue hover:bg-white rounded-lg transition-colors">Academic Programs</a>
+                                <a href="#facilities" class="block px-4 py-2 text-gray-600 hover:text-school-blue hover:bg-white rounded-lg transition-colors">Campus Facilities</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="lg:col-span-3 space-y-16">
+                    <!-- Introduction Section -->
+                    <div id="introduction" class="scroll-mt-20">
+                        <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8">
+                            <h2 class="font-playful text-4xl gradient-text mb-6">Introduction</h2>
+                            <div class="grid md:grid-cols-2 gap-8 items-center">
+                                <div class="space-y-4">
+                                    <p class="text-gray-600 text-lg leading-relaxed">
+                                        Bhanubhakta Campus, located in the scenic Shuklagandaki-4, Tanahun, stands as a beacon of higher education excellence in Nepal. Named after the revered poet Bhanubhakta Acharya, often called the "Adikavi" (first poet) of Nepal, our campus carries forward his legacy of knowledge, culture, and enlightenment.
+                                    </p>
+                                    <p class="text-gray-600 text-lg leading-relaxed">
+                                        Established with the vision of providing accessible and quality higher education, we have been serving the educational needs of students from Tanahun and surrounding districts. Our campus is committed to fostering academic excellence, research innovation, and character development among our students.
+                                    </p>
+                                    <div class="bg-white rounded-lg p-4 shadow-sm">
+                                        <h4 class="font-semibold text-gray-800 mb-2">Key Highlights:</h4>
+                                        <ul class="text-gray-600 space-y-1">
+                                            <li>• Comprehensive bachelor's degree programs</li>
+                                            <li>• Experienced and qualified faculty</li>
+                                            <li>• Modern infrastructure and facilities</li>
+                                            <li>• Strong industry partnerships</li>
+                                            <li>• Active research and innovation culture</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <img src="{% static 'base/media/about.jpg' %}" alt="Campus Building" class="rounded-xl shadow-lg">
+                                    <div class="absolute -bottom-4 -right-4 w-20 h-20 bg-school-blue rounded-full opacity-20"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campus Chief Message -->
+                    <div id="campus-chief" class="scroll-mt-20">
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
+                            <h2 class="font-playful text-4xl gradient-text mb-8">Message from Campus Chief</h2>
+                            <div class="grid md:grid-cols-3 gap-8 items-center">
+                                <div class="text-center">
+                                    <img src="{% static 'base/media/chief.png' %}" alt="Campus Chief" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-lg">
+                                    <h3 class="text-2xl font-semibold text-gray-800 mb-1">Ramesh Bahadur Adhikari</h3>
+                                    <p class="text-school-blue font-medium text-lg">Campus Chief</p>
+                                    <p class="text-gray-600 text-sm">M.Ed., Educational Leadership</p>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <div class="relative bg-white rounded-xl p-6 shadow-sm">
+                                        <div class="absolute -left-2 -top-2 text-4xl text-school-blue opacity-30">"</div>
+                                        <p class="text-gray-700 text-lg leading-relaxed mb-4 relative z-10">
+                                            Welcome to Bhanubhakta Campus, where academic excellence meets personal growth. As Campus Chief, I am proud to lead an institution that has consistently maintained high standards of education while fostering an environment of innovation and critical thinking.
+                                        </p>
+                                        <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                                            Our commitment extends beyond classroom learning. We strive to develop well-rounded individuals who are not only academically competent but also ethically responsible and socially conscious. Our faculty and staff are dedicated to providing personalized attention to each student, ensuring their success in both academic and professional endeavors.
+                                        </p>
+                                        <p class="text-gray-700 text-lg leading-relaxed">
+                                            I invite you to join our academic community and experience the transformative power of quality higher education. Together, we will build a brighter future for our students and our nation.
+                                        </p>
+                                        <div class="absolute -right-2 -bottom-2 text-4xl text-school-blue opacity-30">"</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chairman Message -->
+                    <div id="chairman" class="scroll-mt-20">
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8">
+                            <h2 class="font-playful text-4xl gradient-text mb-8">Message from Chairman</h2>
+                            <div class="grid md:grid-cols-3 gap-8 items-center">
+                                <div class="text-center">
+                                    <img src="{% static 'base/media/chairman.jpg' %}" alt="Chairman" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-lg">
+                                    <h3 class="text-2xl font-semibold text-gray-800 mb-1">Durga Kumar Shrestha</h3>
+                                    <p class="text-school-purple font-medium text-lg">Chairman</p>
+                                    <p class="text-gray-600 text-sm">Ph.D., Educational Management</p>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <div class="relative bg-white rounded-xl p-6 shadow-sm">
+                                        <div class="absolute -left-2 -top-2 text-4xl text-school-purple opacity-30">"</div>
+                                        <p class="text-gray-700 text-lg leading-relaxed mb-4 relative z-10">
+                                            Education is the cornerstone of progress, and at Bhanubhakta Campus, we are committed to building that foundation with unwavering dedication. Our vision encompasses not just academic achievement, but the holistic development of every student who walks through our doors.
+                                        </p>
+                                        <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                                            We believe in fostering an environment where innovation thrives, where questions are encouraged, and where every student is empowered to reach their full potential. Our strategic initiatives focus on maintaining academic excellence while ensuring accessibility and inclusivity for students from all backgrounds.
+                                        </p>
+                                        <p class="text-gray-700 text-lg leading-relaxed">
+                                            As we move forward, we remain committed to our mission of producing graduates who will become leaders, innovators, and responsible citizens contributing to the development of our society and nation.
+                                        </p>
+                                        <div class="absolute -right-2 -bottom-2 text-4xl text-school-purple opacity-30">"</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mission & Vision -->
+                    <div id="mission-vision" class="scroll-mt-20">
+                        <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8">
+                            <h2 class="font-playful text-4xl gradient-text mb-8">Mission & Vision</h2>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <!-- Mission -->
+                                <div class="bg-white rounded-xl p-6 shadow-sm">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-school-blue rounded-full flex items-center justify-center mr-4">
+                                            <i class="fas fa-bullseye text-white text-xl"></i>
+                                        </div>
+                                        <h3 class="text-2xl font-semibold text-gray-800">Our Mission</h3>
+                                    </div>
+                                    <p class="text-gray-700 leading-relaxed mb-4">
+                                        To provide accessible, quality higher education that empowers students with knowledge, skills, and ethical values necessary for personal growth, professional success, and meaningful contribution to society.
+                                    </p>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-check text-school-green mr-2"></i>
+                                            <span class="text-gray-600">Excellence in Teaching & Learning</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-check text-school-green mr-2"></i>
+                                            <span class="text-gray-600">Character Development</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-check text-school-green mr-2"></i>
+                                            <span class="text-gray-600">Community Engagement</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Vision -->
+                                <div class="bg-white rounded-xl p-6 shadow-sm">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-school-purple rounded-full flex items-center justify-center mr-4">
+                                            <i class="fas fa-eye text-white text-xl"></i>
+                                        </div>
+                                        <h3 class="text-2xl font-semibold text-gray-800">Our Vision</h3>
+                                    </div>
+                                    <p class="text-gray-700 leading-relaxed mb-4">
+                                        To be recognized as a leading higher education institution in Nepal, known for academic excellence, innovative teaching methods, and producing graduates who are competent, ethical, and committed to social development.
+                                    </p>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-school-yellow mr-2"></i>
+                                            <span class="text-gray-600">Regional Leadership</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-school-yellow mr-2"></i>
+                                            <span class="text-gray-600">Innovation & Research</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-school-yellow mr-2"></i>
+                                            <span class="text-gray-600">Global Recognition</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Strategic Plan -->
+                    <div id="strategic-plan" class="scroll-mt-20">
+                        <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8">
+                            <h2 class="font-playful text-4xl gradient-text mb-8">Strategic Plan 2082-2092</h2>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="space-y-6">
+                                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                            <span class="w-8 h-8 bg-school-blue text-white rounded-full flex items-center justify-center text-sm mr-3">1</span>
+                                            Academic Excellence
+                                        </h3>
+                                        <ul class="text-gray-600 space-y-2">
+                                            <li>• Enhance curriculum quality and relevance</li>
+                                            <li>• Improve student learning outcomes</li>
+                                            <li>• Strengthen faculty development programs</li>
+                                            <li>• Establish research centers of excellence</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                            <span class="w-8 h-8 bg-school-green text-white rounded-full flex items-center justify-center text-sm mr-3">2</span>
+                                            Infrastructure Development
+                                        </h3>
+                                        <ul class="text-gray-600 space-y-2">
+                                            <li>• Modernize campus facilities</li>
+                                            <li>• Expand library and laboratory resources</li>
+                                            <li>• Develop digital learning platforms</li>
+                                            <li>• Create sustainable campus environment</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-6">
+                                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                            <span class="w-8 h-8 bg-school-purple text-white rounded-full flex items-center justify-center text-sm mr-3">3</span>
+                                            Student Success
+                                        </h3>
+                                        <ul class="text-gray-600 space-y-2">
+                                            <li>• Improve graduation rates</li>
+                                            <li>• Enhance career placement services</li>
+                                            <li>• Expand scholarship programs</li>
+                                            <li>• Strengthen alumni network</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                            <span class="w-8 h-8 bg-school-yellow text-white rounded-full flex items-center justify-center text-sm mr-3">4</span>
+                                            Community Impact
+                                        </h3>
+                                        <ul class="text-gray-600 space-y-2">
+                                            <li>• Increase community partnerships</li>
+                                            <li>• Develop extension programs</li>
+                                            <li>• Promote social responsibility</li>
+                                            <li>• Support local development initiatives</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Policy & Motto -->
+                    <div id="policy-motto" class="scroll-mt-20">
+                        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8">
+                            <h2 class="font-playful text-4xl gradient-text mb-8">Policy & Motto</h2>
+                            
+                            <!-- Motto -->
+                            <div class="text-center mb-8">
+                                <div class="bg-gradient-to-r from-school-blue to-school-purple rounded-xl p-8 text-white">
+                                    <h3 class="text-2xl font-semibold mb-4">Our Motto</h3>
+                                    <p class="text-3xl font-playful italic">"शिक्षा र संस्कार - Knowledge & Character"</p>
+                                    <p class="text-lg mt-4 opacity-90">Enlightening minds, enriching lives, empowering futures</p>
+                                </div>
+                            </div>
+
+                            <!-- Core Policies -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-white rounded-xl p-6 shadow-sm">
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                        <i class="fas fa-scroll text-school-blue mr-3"></i>
+                                        Academic Policy
+                                    </h4>
+                                    <ul class="text-gray-600 space-y-2">
+                                        <li>• Maintain high academic standards</li>
+                                        <li>• Promote research and innovation</li>
+                                        <li>• Ensure fair and transparent evaluation</li>
+                                        <li>• Support continuous learning</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-white rounded-xl p-6 shadow-sm">
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                        <i class="fas fa-users text-school-green mr-3"></i>
+                                        Student Welfare Policy
+                                    </h4>
+                                    <ul class="text-gray-600 space-y-2">
+                                        <li>• Equal opportunities for all students</li>
+                                        <li>• Financial assistance programs</li>
+                                        <li>• Comprehensive support services</li>
+                                        <li>• Safe and inclusive environment</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-white rounded-xl p-6 shadow-sm">
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                        <i class="fas fa-leaf text-school-purple mr-3"></i>
+                                        Environmental Policy
+                                    </h4>
+                                    <ul class="text-gray-600 space-y-2">
+                                        <li>• Sustainable campus practices</li>
+                                        <li>• Environmental awareness programs</li>
+                                        <li>• Green technology initiatives</li>
+                                        <li>• Waste reduction and recycling</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-white rounded-xl p-6 shadow-sm">
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                        <i class="fas fa-handshake text-school-yellow mr-3"></i>
+                                        Ethics Policy
+                                    </h4>
+                                    <ul class="text-gray-600 space-y-2">
+                                        <li>• Integrity in all operations</li>
+                                        <li>• Zero tolerance for discrimination</li>
+                                        <li>• Respect for diversity and inclusion</li>
+                                        <li>• Transparent governance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academic Programs -->
+                    <div id="programs" class="scroll-mt-20">
+                        <div class="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8">
+                            <h2 class="font-playful text-4xl gradient-text mb-8">Academic Programs</h2>
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                                    <div class="w-16 h-16 bg-school-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-business-time text-white text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Bachelor of Business Studies (BBS)</h3>
+                                    <p class="text-gray-600 text-sm mb-4">Comprehensive business education preparing students for leadership roles in various industries.</p>
+                                    <div class="text-xs text-gray-500">
+                                        <p>Duration: 4 Years</p>
+                                        <p>Affiliation: TU</p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                                    <div class="w-16 h-16 bg-school-green rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-chalkboard-teacher text-white text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Bachelor of Education (B.Ed)</h3>
+                                    <p class="text-gray-600 text-sm mb-4">Professional teacher training program focusing on modern pedagogical methods and practices.</p>
+                                    <div class="text-xs text-gray-500">
+                                        <p>Duration: 4 Years</p>
+                                        <p>Affiliation: TU</p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                                    <div class="w-16 h-16 bg-school-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-book-open text-white text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Master of Arts (MA)</h3>
+                                    <p class="text-gray-600 text-sm mb-4">Advanced postgraduate program fostering critical thinking and research in humanities and social sciences.</p>
+                                    <div class="text-xs text-gray-500">
+                                        <p>Duration: 2 Years</p>
+                                        <p>Affiliation: TU</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campus Facilities -->
+                    <div id="facilities" class="scroll-mt-20">
+                        <div class="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-8">
+                            <h2 class="font-playful text-4xl gradient-text mb-8">Campus Facilities</h2>
+                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                                    <i class="fas fa-book text-school-blue text-3xl mb-4"></i>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Modern Library</h3>
+                                    <p class="text-gray-600 text-sm">Extensive collection of books, journals, and digital resources</p>
+                                </div>
+
+                                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                                    <i class="fas fa-desktop text-school-green text-3xl mb-4"></i>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Computer Lab</h3>
+                                    <p class="text-gray-600 text-sm">State-of-the-art computing facilities with latest software</p>
+                                </div>
+
+                                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                                    <i class="fas fa-wifi text-school-yellow text-3xl mb-4"></i>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Wi-Fi Campus</h3>
+                                    <p class="text-gray-600 text-sm">High-speed internet connectivity throughout campus</p>
+                                </div>
+
+                                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                                    <i class="fas fa-utensils text-school-blue text-3xl mb-4"></i>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Cafeteria</h3>
+                                    <p class="text-gray-600 text-sm">Healthy and hygienic food services</p>
+                                </div>
+
+                                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                                    <i class="fas fa-running text-school-green text-3xl mb-4"></i>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Sports Facilities</h3>
+                                    <p class="text-gray-600 text-sm">Playground and sports equipment for physical activities</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gradient-to-r from-school-blue to-school-purple">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white">
+                <h2 class="text-4xl font-playful mb-6">Join Bhanubhakta Campus</h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto">
+                    Take the next step in your educational journey with us. Discover opportunities for growth, learning, and success.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{% url 'base:admission' %}" class="inline-block bg-white text-school-blue px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                        Apply for Admission
+                    </a>
+                    <a href="{% url 'base:contact' %}" class="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-school-blue transition-colors">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section in navigation
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('div[id]');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('text-school-blue', 'bg-white');
+                link.classList.add('text-gray-600');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-gray-600');
+                    link.classList.add('text-school-blue', 'bg-white');
+                }
+            });
+        });
+    </script>
+{% endblock %} 

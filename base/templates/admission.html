@@ -1,0 +1,338 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="relative py-20 bg-gradient-to-br from-school-blue to-school-purple">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="font-playful text-4xl sm:text-5xl lg:text-6xl text-white mb-6">Admission - Bhanubhakta Multiple Campus</h1>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="mb-6 p-4 rounded-lg {% if message.tags == 'success' %}bg-green-100 border border-green-400 text-green-700{% else %}bg-red-100 border border-red-400 text-red-700{% endif %}">
+                            <div class="flex items-center">
+                                <i class="fas {% if message.tags == 'success' %}fa-check-circle{% else %}fa-exclamation-triangle{% endif %} mr-2"></i>
+                                {{ message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="post" action="{% url 'base:admission' %}" enctype="multipart/form-data" class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+                    {% csrf_token %}
+                    <div class="space-y-8">
+                        
+                        <!-- Profile Photo Upload -->
+                        <div class="bg-gray-50 rounded-2xl p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                                <i class="fas fa-camera mr-2 text-school-blue"></i>Profile Photo Upload
+                            </h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-3xl text-gray-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">Upload Photo</label>
+                                    {{ form.profile_photo }}
+                                    {% if form.profile_photo.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.profile_photo.errors.0 }}</div>
+                                    {% endif %}
+                                    <p class="text-sm text-gray-500 mt-1">Upload a passport-size photo (JPG, PNG, max 5MB)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Personal Information -->
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                                <i class="fas fa-user mr-2 text-school-blue"></i>Personal Information
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-signature mr-2"></i>Full Name (Block Letters)
+                                    </label>
+                                    {{ form.full_name }}
+                                    {% if form.full_name.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.full_name.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-calendar mr-2"></i>Date of Birth (A.D.)
+                                    </label>
+                                    {{ form.date_of_birth_ad }}
+                                    {% if form.date_of_birth_ad.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.date_of_birth_ad.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-calendar-alt mr-2"></i>Date of Birth (B.S.)
+                                    </label>
+                                    {{ form.date_of_birth_bs }}
+                                    {% if form.date_of_birth_bs.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.date_of_birth_bs.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-flag mr-2"></i>Nationality
+                                    </label>
+                                    {{ form.nationality }}
+                                    {% if form.nationality.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.nationality.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-venus-mars mr-2"></i>Gender
+                                    </label>
+                                    {{ form.gender }}
+                                    {% if form.gender.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.gender.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-phone mr-2"></i>Contact Number
+                                    </label>
+                                    {{ form.contact_number }}
+                                    {% if form.contact_number.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.contact_number.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-envelope mr-2"></i>Email Address
+                                    </label>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.email.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-home mr-2"></i>Permanent Address
+                                    </label>
+                                    {{ form.permanent_address }}
+                                    {% if form.permanent_address.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.permanent_address.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-map-marker-alt mr-2"></i>Temporary Address
+                                    </label>
+                                    {{ form.temporary_address }}
+                                    {% if form.temporary_address.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.temporary_address.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Academic Qualifications -->
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                                <i class="fas fa-graduation-cap mr-2 text-school-blue"></i>Academic Qualifications
+                            </h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-certificate mr-2"></i>Any Other Qualification (Specify Organization)
+                                    </label>
+                                    {{ form.other_qualification }}
+                                    {% if form.other_qualification.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.other_qualification.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-check-circle mr-2"></i>Result Status
+                                    </label>
+                                    {{ form.result_status }}
+                                    {% if form.result_status.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.result_status.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- Academic Table -->
+                            <div class="bg-gray-50 rounded-lg p-6">
+                                <h4 class="text-lg font-medium text-gray-800 mb-4">Academic Records</h4>
+                                <div class="overflow-x-auto">
+                                    {{ academic_formset.management_form }}
+                                    <div id="academic-formset">
+                                        {% for form in academic_formset %}
+                                            <div class="academic-form border border-gray-200 rounded-lg p-4 mb-4 bg-white">
+                                                {{ form.id }}
+                                                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                                                    <div>
+                                                        <label class="block text-xs font-medium text-gray-700 mb-1">Institution Name</label>
+                                                        {{ form.institution_name }}
+                                                        {% if form.institution_name.errors %}
+                                                            <div class="text-red-600 text-xs mt-1">{{ form.institution_name.errors.0 }}</div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-xs font-medium text-gray-700 mb-1">Program</label>
+                                                        {{ form.program }}
+                                                        {% if form.program.errors %}
+                                                            <div class="text-red-600 text-xs mt-1">{{ form.program.errors.0 }}</div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-xs font-medium text-gray-700 mb-1">Symbol No.</label>
+                                                        {{ form.symbol_number }}
+                                                        {% if form.symbol_number.errors %}
+                                                            <div class="text-red-600 text-xs mt-1">{{ form.symbol_number.errors.0 }}</div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-xs font-medium text-gray-700 mb-1">Passed Year</label>
+                                                        {{ form.passed_year }}
+                                                        {% if form.passed_year.errors %}
+                                                            <div class="text-red-600 text-xs mt-1">{{ form.passed_year.errors.0 }}</div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-xs font-medium text-gray-700 mb-1">Percentage/CGPA</label>
+                                                        {{ form.percentage_cgpa }}
+                                                        {% if form.percentage_cgpa.errors %}
+                                                            <div class="text-red-600 text-xs mt-1">{{ form.percentage_cgpa.errors.0 }}</div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="md:col-span-2">
+                                                        <label class="block text-xs font-medium text-gray-700 mb-1">Major Subjects</label>
+                                                        {{ form.major_subjects }}
+                                                        {% if form.major_subjects.errors %}
+                                                            <div class="text-red-600 text-xs mt-1">{{ form.major_subjects.errors.0 }}</div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                {% if form.DELETE %}
+                                                    <div class="mt-2">
+                                                        {{ form.DELETE }}
+                                                        <label class="text-sm text-red-600">Delete this record</label>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Guardian Details -->
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                                <i class="fas fa-users mr-2 text-school-blue"></i>Guardian Details
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-user-shield mr-2"></i>Name of Guardian
+                                    </label>
+                                    {{ form.guardian_name }}
+                                    {% if form.guardian_name.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.guardian_name.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                                        <i class="fas fa-phone-alt mr-2"></i>Guardian's Contact Number
+                                    </label>
+                                    {{ form.guardian_contact }}
+                                    {% if form.guardian_contact.errors %}
+                                        <div class="text-red-600 text-sm mt-1">{{ form.guardian_contact.errors.0 }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Documents Upload -->
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                                <i class="fas fa-upload mr-2 text-school-blue"></i>Documents Upload
+                            </h3>
+                            <div class="bg-gray-50 rounded-lg p-6">
+                                {{ document_formset.management_form }}
+                                <div id="document-formset">
+                                    {% for form in document_formset %}
+                                        <div class="document-form border border-gray-200 rounded-lg p-4 mb-4 bg-white">
+                                            {{ form.id }}
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                                                <div>
+                                                    <label class="block text-sm font-medium text-gray-700 mb-2">Document Name</label>
+                                                    {{ form.document_name }}
+                                                    {% if form.document_name.errors %}
+                                                        <div class="text-red-600 text-sm mt-1">{{ form.document_name.errors.0 }}</div>
+                                                    {% endif %}
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm font-medium text-gray-700 mb-2">Upload Document</label>
+                                                    {{ form.document_file }}
+                                                    {% if form.document_file.errors %}
+                                                        <div class="text-red-600 text-sm mt-1">{{ form.document_file.errors.0 }}</div>
+                                                    {% endif %}
+                                                </div>
+                                                <div>
+                                                    {% if form.DELETE %}
+                                                        {{ form.DELETE }}
+                                                        <label class="text-sm text-red-600">Delete</label>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-6 border-t border-gray-200">
+                            <button type="submit" class="w-full bg-gradient-to-r from-school-blue to-school-purple text-white py-4 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-lg flex items-center justify-center text-lg">
+                                <i class="fas fa-paper-plane mr-3"></i>
+                                Submit Application
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+                    <!-- Contact for Admission Section -->
+                    <section class="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="bg-gradient-to-r from-school-blue to-school-purple rounded-3xl shadow-xl p-8 text-white">
+                                <h3 class="text-2xl font-semibold mb-4">Need Help?</h3>
+                                <p class="mb-6">Our admission team is here to guide you through the process</p>
+                                <div class="space-y-4">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-phone-alt"></i>
+                                        <p>065-571240</p>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-envelope"></i>
+                                        <p>bhanubhaktacampus240@gmail.com</p>
+                                    </div>
+                                </div>
+                                <a href="{% url 'base:contact' %}" class="inline-block mt-6 bg-white text-school-blue px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+{% endblock %} 

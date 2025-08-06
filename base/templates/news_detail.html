@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative py-20 bg-gradient-to-br from-school-blue to-school-purple">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <a href="{% url 'base:news' %}" class="inline-flex items-center text-white/80 hover:text-white mb-4 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to News
+            </a>
+            <h1 class="font-playful text-3xl sm:text-4xl lg:text-5xl text-white mb-4">{{ news.title }}</h1>
+            <div class="flex items-center justify-center text-white/90 space-x-6">
+                <div class="flex items-center">
+                    <i class="far fa-calendar-alt mr-2"></i>
+                    {{ news.published_date|date:"F j, Y" }}
+                </div>
+                {% if news.author %}
+                <div class="flex items-center">
+                    <i class="fas fa-user mr-2"></i>
+                    {{ news.author.get_full_name|default:news.author.username }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- News Content Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Main Content -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    {% if news.image %}
+                    <img src="{{ news.image.url }}" alt="{{ news.title }}" class="w-full h-96 object-cover">
+                    {% endif %}
+                    <div class="p-8">
+                        <div class="prose prose-lg max-w-none">
+                            {{ news.content|linebreaks }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Share (Optional) -->
+                <div class="mt-8 bg-white rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Share this news</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-facebook-f mr-2"></i>
+                            Facebook
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition-colors">
+                            <i class="fab fa-twitter mr-2"></i>
+                            Twitter
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors">
+                            <i class="fab fa-linkedin-in mr-2"></i>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-8">
+                <!-- Recent News -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-newspaper mr-2 text-school-blue"></i>
+                        Recent News
+                    </h3>
+                    <div class="space-y-4">
+                        {% for recent in recent_news %}
+                        <div class="group hover:bg-gray-50 rounded-lg p-4 transition-all">
+                            <h4 class="font-semibold text-gray-800 group-hover:text-school-blue transition-colors mb-2">
+                                <a href="{% url 'base:news_detail' recent.pk %}">{{ recent.title }}</a>
+                            </h4>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2 w-4 text-gray-400"></i>
+                                {{ recent.published_date|date:"F j, Y" }}
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p class="text-gray-500 text-sm italic">
+                            No other recent news available.
+                        </p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Latest Notices -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-bullhorn mr-2 text-school-blue"></i>
+                        Latest Notices
+                    </h3>
+                    <div class="space-y-4">
+                        {% for notice in latest_notices %}
+                        <div class="group hover:bg-gray-50 rounded-lg p-4 transition-all">
+                            <h4 class="font-semibold text-gray-800 group-hover:text-school-blue transition-colors mb-2">
+                                <a href="{% url 'base:notice_detail' notice.pk %}">{{ notice.title }}</a>
+                            </h4>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2 w-4 text-gray-400"></i>
+                                {{ notice.published_date|date:"F j, Y" }}
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p class="text-gray-500 text-sm italic">
+                            No recent notices available.
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <div class="mt-6 text-center">
+                        <a href="{% url 'base:notice' %}" class="inline-block px-6 py-2 bg-school-blue text-white rounded-lg hover:bg-school-blue/90 transition-colors">
+                            View All Notices
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

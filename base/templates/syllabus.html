@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-r from-school-blue to-school-purple">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                Academic Syllabus
+            </h1>
+            <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                Download detailed syllabus for all our academic programs
+            </p>
+        </div>
+    </section>
+
+    <!-- Navigation Breadcrumb -->
+    <section class="py-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-gray-600">
+                <ol class="flex items-center space-x-2">
+                    <li><a href="{% url 'base:home' %}" class="hover:text-school-blue">Home</a></li>
+                    <li class="text-gray-400">/</li>
+                    <li class="text-school-blue font-medium">Syllabus</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Syllabus Content -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Bachelor Level Programs -->
+            <div class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Bachelor Level Programs</h2>
+                    <div class="w-24 h-1 bg-school-blue mx-auto"></div>
+                </div>
+                
+                {% if bachelor_syllabuses %}
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {% for syllabus in bachelor_syllabuses %}
+                        <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200">
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                                            {{ syllabus.course.name }}
+                                        </h3>
+                                        <p class="text-sm text-gray-600 mb-3">
+                                            Course Code: {{ syllabus.course.course_code }}
+                                        </p>
+                                        {% if syllabus.course.description %}
+                                        <p class="text-gray-700 text-sm mb-4 line-clamp-3">
+                                            {{ syllabus.course.description|truncatewords:20 }}
+                                        </p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-file-pdf text-blue-600 text-xl"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center justify-between">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                        {{ syllabus.course.get_level_display }}
+                                    </span>
+                                    <a href="{{ syllabus.file.url }}" target="_blank" 
+                                       class="inline-flex items-center px-4 py-2 bg-school-blue text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                                        <i class="fas fa-download mr-2"></i>
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-12">
+                        <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-file-pdf text-gray-400 text-3xl"></i>
+                        </div>
+                        <p class="text-gray-600">No bachelor level syllabuses available at the moment.</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Master Level Programs -->
+            <div class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Master Level Programs</h2>
+                    <div class="w-24 h-1 bg-school-purple mx-auto"></div>
+                </div>
+                
+                {% if master_syllabuses %}
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {% for syllabus in master_syllabuses %}
+                        <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200">
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                                            {{ syllabus.course.name }}
+                                        </h3>
+                                        <p class="text-sm text-gray-600 mb-3">
+                                            Course Code: {{ syllabus.course.course_code }}
+                                        </p>
+                                        {% if syllabus.course.description %}
+                                        <p class="text-gray-700 text-sm mb-4 line-clamp-3">
+                                            {{ syllabus.course.description|truncatewords:20 }}
+                                        </p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-file-pdf text-purple-600 text-xl"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center justify-between">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                        {{ syllabus.course.get_level_display }}
+                                    </span>
+                                    <a href="{{ syllabus.file.url }}" target="_blank" 
+                                       class="inline-flex items-center px-4 py-2 bg-school-purple text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors duration-300">
+                                        <i class="fas fa-download mr-2"></i>
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-12">
+                        <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-file-pdf text-gray-400 text-3xl"></i>
+                        </div>
+                        <p class="text-gray-600">No master level syllabuses available at the moment.</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-gray-50 rounded-lg p-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Need More Information?</h3>
+                <p class="text-gray-600 mb-6">
+                    For detailed course information, admission requirements, or any queries regarding the syllabus
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{% url 'base:contact' %}" 
+                       class="inline-flex items-center px-6 py-3 bg-school-blue text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                        <i class="fas fa-phone mr-2"></i>
+                        Contact Us
+                    </a>
+                    <a href="{% url 'base:admission' %}" 
+                       class="inline-flex items-center px-6 py-3 bg-school-green text-white font-medium rounded-lg hover:bg-green-700 transition-colors duration-300">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        Apply Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

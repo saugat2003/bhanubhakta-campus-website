@@ -1,0 +1,634 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhanubhakta Multiple Campus</title>
+    <link rel="icon" href="{% static 'base/media/favicon.png' %}" type="image/x-icon">
+    <!-- FCA Icon CDN (Fontisto) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'school-blue': '#1E40AF',
+                        'school-yellow': '#FCD34D',
+                        'school-green': '#10B981',
+                        'school-purple': '#8B5CF6'
+                    },
+                    fontFamily: {
+                        'playful': ['Montserrat', 'sans-serif'],
+                        'clean': ['Montserrat', 'sans-serif']
+                    },
+                    fontWeight: {
+                        'thin': '300', // Example: Change 'thin' to 300
+                        'extra-light': '200',
+                        'light': '400',
+                        'normal': '500',
+                        'medium': '600',
+                        'semibold': '700',
+                        'bold': '800',
+                        'extrabold': '900',
+                        'black': '950' // Example: Change 'black' to 950
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        
+        .font-playful { font-family: 'Montserrat', sans-serif; }
+        .font-clean { font-family: 'Montserrat', sans-serif; }
+        
+        .animate-bounce-slow {
+            animation: bounce 5s infinite;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            border-radius: 0 0 1rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            margin: 0;
+            border-radius: 1
+        }
+
+        .apply-btn {
+            background: linear-gradient(135deg, #1E40AF 0%, #8B5CF6 100%);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+            animation: none;
+        }
+
+        .apply-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .apply-btn:hover::before {
+            left: 100%;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(30, 64, 175, 0.5), 0 0 15px rgba(139, 92, 246, 0.3);
+            }
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(135deg, #1E40AF 0%, #8B5CF6 100%);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Add these new animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .animate-fade-in-delay {
+            animation: fadeIn 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        .animate-fade-in-delay-2 {
+            animation: fadeIn 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+        @keyframes scroll {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(0); }
+        }
+        .animate-scroll {
+            animation: scroll 2s infinite;
+        }
+
+        /* Global font weight styles */
+        body {
+            font-weight: 400; /* Default font weight */
+        }
+
+        h1 {
+            font-weight: 900; /* Bold for headings */
+        }
+
+        h2, h3 {
+            font-weight: 600; /* Semi-bold for subheadings */
+        }
+
+        p, li {
+            font-weight: 400; /* Normal for paragraphs and list items */
+        }
+
+        a {
+            font-weight: 500; /* Medium for links */
+        }
+
+        /* Announcement Banner Styles */
+        .announcement-banner {
+            background: linear-gradient(90deg, #1E40AF, #8B5CF6);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            transform: translateY(0);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .announcement-banner.hidden {
+            transform: translateY(-100%);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .marquee-text {
+            animation: marquee 30s linear infinite;
+            white-space: nowrap;
+        }
+        /* Combined Banner Styles */
+        .combined-banner {
+            background: linear-gradient(90deg, #1E40AF, #2e058f);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            transform: translateY(0);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .combined-banner.hidden {
+            transform: translateY(-100%);
+        }
+
+        /* Navbar smooth transition */
+        #main-navbar {
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .navbar-adjusted {
+            margin-top: 1px;
+        }
+
+        /* Main content smooth transition */
+        main {
+            transition: padding-top 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info-row {
+                display: none;
+            }
+            .navbar-adjusted {
+                margin-top: 40px;
+            }
+            /* Hide announcement banner on mobile */
+            .combined-banner {
+                display: none !important;
+            }
+            /* Adjust navbar for mobile when banner is hidden */
+            #main-navbar {
+                top: 0 !important;
+                margin-top: 0 !important;
+            }
+            main {
+                padding-top: 5rem !important; /* Adjust main content padding for mobile */
+            }
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 240px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #374151;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            color: #1E40AF;
+            padding-left: 24px;
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.3s ease;
+            font-size: 0.8em;
+            margin-left: 4px;
+        }
+
+        .dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="font-clean bg-gradient-to-br from-blue-50 to-purple-50">
+    <!-- Combined Announcement and Contact Banner -->
+    <div id="combined-banner" class="combined-banner fixed w-full z-50 h-20 overflow-hidden">
+        <!-- Announcement Row -->
+        <div class="flex items-center h-10">
+            <div class="marquee-text text-white font-medium text-sm px-4">
+                📢 Admission Open for Bachelor Programs - Apply Now! | 🎓 New Courses Available in Business Studies, Education, Arts | 📞 Contact: 065-571240 | 📧 bhanubhaktacampus240@gmail.com
+            </div>
+        </div>
+        
+        <!-- Contact Info Row -->
+        <div class="contact-info-row h-10 border-t border-white/20">
+            <div class="max-w-7xl mx-auto px-4 h-full">
+                <div class="flex items-center justify-between h-full text-xs">
+                    <div class="contact-info-item">
+                        <span>📞 065-571240 / 9856001455</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <span>📧 bhanubhaktacampus240@gmail.com</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <span>📍 Shuklagandaki-5, Belchautara, Tanahun, Nepal</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <span>🕓 6:00 AM - 4:00 PM, Sunday to Friday</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="main-navbar" class="bg-white shadow-lg fixed w-full z-40 navbar-adjusted">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <div class="w-60 h-20 flex items-center justify-center mr-3">
+                        <a href="{% url 'base:home' %}">
+                            <img src="{% static 'base/media/logo.png' %}" alt="Bhanubhakta Campus Logo" class="w-full h-full object-cover rounded-full">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{% url 'base:home' %}" class="text-gray-700 hover:text-school-blue transition-colors">Home</a>
+                    
+                    <!-- About Dropdown -->
+                    <div class="dropdown">
+                        <a href="{% url 'base:about' %}" class="text-gray-700 hover:text-school-blue transition-colors flex items-center">
+                            About
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="{% url 'base:faculty_members' %}" class="dropdown-item">
+                                Faculty Members
+                            </a>
+                            <a href="{% url 'base:about' %}#introduction" class="dropdown-item">
+                                Introduction
+                            </a>
+                            <a href="{% url 'base:about' %}#campus-chief" class="dropdown-item">
+                                Campus Chief Message
+                            </a>
+                            <a href="{% url 'base:about' %}#chairman" class="dropdown-item">
+                                Chairman Message
+                            </a>
+                            <a href="{% url 'base:about' %}#mission-vision" class="dropdown-item">
+                                Mission & Vision
+                            </a>
+                            <a href="{% url 'base:about' %}#strategic-plan" class="dropdown-item">
+                                Strategic Plan
+                            </a>
+                            <a href="{% url 'base:about' %}#policy-motto" class="dropdown-item">
+                                Policy & Motto
+                            </a>
+                            <a href="{% url 'base:about' %}#programs" class="dropdown-item">
+                                Academic Programs
+                            </a>
+                            <a href="{% url 'base:about' %}#facilities" class="dropdown-item">
+                                Campus Facilities
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <a href="{% url 'base:syllabus' %}" class="text-gray-700 hover:text-school-blue transition-colors">Syllabus</a>
+                    <a href="{% url 'base:resources' %}" class="text-gray-700 hover:text-school-blue transition-colors">Resources</a>
+                    <a href="{% url 'base:gallery' %}" class="text-gray-700 hover:text-school-blue transition-colors">Gallery</a>
+                    <a href="{% url 'base:news' %}" class="text-gray-700 hover:text-school-blue transition-colors">News</a>
+                    <a href="{% url 'base:notice' %}" class="text-gray-700 hover:text-school-blue transition-colors">Notices</a>
+                    <a href="{% url 'base:contact' %}" class="nav-link text-gray-700 hover:text-school-blue px-3 py-2 text-sm font-medium transition-colors">Contact</a>                    
+                    <a href="{% url 'base:admission' %}" class="apply-btn text-white px-5 py-1.5 rounded-full font-semibold text-sm">
+                        Admission
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button type="button" id="mobile-menu-button" class="text-gray-700 hover:text-school-blue focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="{% url 'base:home' %}" class="block px-3 py-2 text-gray-700 hover:text-school-blue transition-colors">Home</a>
+                <a href="{% url 'base:about' %}" class="block px-3 py-2 text-gray-700 hover:text-school-blue transition-colors">About</a>
+                <a href="{% url 'base:faculty_members' %}" class="block px-3 py-2 text-gray-700 hover:text-school-blue transition-colors">Faculty</a>
+                <a href="{% url 'base:syllabus' %}" class="block px-3 py-2 text-gray-700 hover:text-school-blue transition-colors">Syllabus</a>
+                <a href="{% url 'base:resources' %}" class="block px-3 py-2 text-gray-700 hover:text-school-blue transition-colors">Resources</a>
+                <a href="{% url 'base:gallery' %}" class="block px-3 py-2 text-gray-700 hover:text-school-blue transition-colors">Gallery</a>
+                <a href="{% url 'base:news' %}" class="block px-3 py-2 text-gray-700 hover:text-school-blue transition-colors">News & Events</a>
+                <a href="{% url 'base:notice' %}" class="block px-3 py-2 text-gray-700 hover:text-school-blue transition-colors">Notices</a>
+                <a href="{% url 'base:contact' %}" class="block px-3 py-2 text-gray-700 hover:text-school-blue transition-colors">Contact</a>
+                <a href="{% url 'base:admission' %}" class="block px-3 py-2 text-white bg-gradient-to-r from-school-blue to-school-purple rounded-lg mt-2 text-center">
+                    Admission
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- School Info -->
+                <div>
+                    <h3 class="text-xl font-playful font-bold mb-4">Bhanubhakta Multiple Campus</h3>
+                    <p class="text-gray-400 mb-4">
+                        Providing quality higher education and shaping future leaders in Tanahun.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'base:home' %}" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="{% url 'base:about' %}" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="{% url 'base:admission' %}" class="text-gray-400 hover:text-white transition-colors">Admission</a></li>
+                        <li><a href="{% url 'base:gallery' %}" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                           Shuklagandaki-5, Belchautara, Tanahun, Nepal
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            065-571240
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            bhanubhaktacampus240@gmail.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Bhanubhakta Multiple Campus. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            
+            // Toggle between hamburger and close icon
+            const icon = this.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuButton.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when window is resized to desktop size
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) { // md breakpoint
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuButton.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Combined banner scroll behavior
+        let lastScrollTop = 0;
+        const combinedBanner = document.getElementById('combined-banner');
+        const mainNavbar = document.getElementById('main-navbar');
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Only show banner when at the very top of the page
+            if (scrollTop <= 10) {
+                // At the top of the page
+                combinedBanner.classList.remove('hidden');
+                mainNavbar.classList.add('navbar-adjusted');
+                mainNavbar.classList.remove('shadow-lg');
+                mainNavbar.classList.add('shadow-md');
+                mainNavbar.style.top = '80px';
+            } else {
+                // Anywhere else on the page - hide banner
+                combinedBanner.classList.add('hidden');
+                mainNavbar.classList.remove('navbar-adjusted');
+                mainNavbar.classList.remove('shadow-md');
+                mainNavbar.classList.add('shadow-lg');
+                mainNavbar.style.top = '0';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Initialize navbar position on page load
+        window.addEventListener('load', function() {
+            if (window.pageYOffset <= 10) {
+                combinedBanner.classList.remove('hidden');
+                mainNavbar.classList.add('navbar-adjusted');
+                mainNavbar.classList.remove('shadow-lg');
+                mainNavbar.classList.add('shadow-md');
+                mainNavbar.style.top = '80px';
+            } else {
+                combinedBanner.classList.add('hidden');
+                mainNavbar.classList.remove('navbar-adjusted');
+                mainNavbar.classList.remove('shadow-md');
+                mainNavbar.classList.add('shadow-lg');
+                mainNavbar.style.top = '0';
+            }
+        });
+    </script>
+</body>
+</html>

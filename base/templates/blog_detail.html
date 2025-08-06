@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative py-16 bg-gradient-to-br from-school-blue to-school-purple">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-playful text-3xl sm:text-4xl lg:text-5xl text-white mb-4">{{ blog.title }}</h1>
+        <div class="flex items-center text-white/90 space-x-4">
+            <div class="flex items-center">
+                <i class="far fa-calendar-alt mr-2"></i>
+                {{ blog.date_posted|date:"F j, Y" }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Content Section -->
+<section class="py-12 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <article class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            {% if blog.image %}
+            <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="w-full h-96 object-cover">
+            {% endif %}
+            <div class="p-8">
+                <div class="prose prose-lg max-w-none">
+                    {{ blog.content|safe|linebreaks }}
+                </div>
+            </div>
+        </article>
+        
+        <!-- Back to Blog Button -->
+        <div class="mt-8 text-center">
+            <a href="{% url 'blog' %}" class="inline-flex items-center px-6 py-3 bg-school-blue text-white rounded-lg hover:bg-school-blue/90 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to Blog
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

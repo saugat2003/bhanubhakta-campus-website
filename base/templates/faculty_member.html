@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Faculty Members - Our Dedicated Team{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="relative py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="font-playful text-5xl sm:text-6xl gradient-text mb-6">Our Faculty</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Meet our dedicated team of educators who inspire and guide our students towards excellence
+                </p>
+                {% if total_faculty > 0 %}
+                <p class="text-sm text-gray-500 mt-4">{{ total_faculty }} dedicated educator{{ total_faculty|pluralize }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {% if faculty %}
+                <!-- Faculty Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="faculty-grid">
+                    {% for member in faculty %}
+                    <div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <!-- Faculty Image -->
+                        <div class="relative overflow-hidden">
+                            {% if member.image %}
+                            <img src="{{ member.image.url }}" 
+                                 alt="{{ member.full_name }}" 
+                                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                            {% else %}
+                            <div class="w-full h-64 bg-gradient-to-br from-school-blue to-school-purple flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-user-tie text-4xl mb-2"></i>
+                                    <p class="text-sm font-medium">{{ member.full_name|truncatewords:2 }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            <!-- Hover Overlay with Bio -->
+                            {% if member.bio %}
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                                <div class="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    <p class="text-sm leading-relaxed">{{ member.bio|truncatewords:25 }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Faculty Details -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-school-blue transition-colors duration-300">
+                                {{ member.full_name }}
+                            </h3>
+                            <p class="text-school-purple font-medium text-sm mb-3">
+                                {{ member.designation }}
+                            </p>
+                            
+                            <!-- Contact Information -->
+                            <div class="space-y-2">
+                                {% if member.contact_email %}
+                                <div class="flex items-center text-gray-600 text-sm">
+                                    <i class="fas fa-envelope text-school-blue mr-2"></i>
+                                    <a href="mailto:{{ member.contact_email }}" class="hover:text-school-blue transition-colors">
+                                        {{ member.contact_email|truncatechars:20 }}
+                                    </a>
+                                </div>
+                                {% endif %}
+                                
+                                {% if member.phone_number %}
+                                <div class="flex items-center text-gray-600 text-sm">
+                                    <i class="fas fa-phone text-school-blue mr-2"></i>
+                                    <a href="tel:{{ member.phone_number }}" class="hover:text-school-blue transition-colors">
+                                        {{ member.phone_number }}
+                                    </a>
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Bio Preview (for cards without images) -->
+                            {% if not member.image and member.bio %}
+                            <div class="mt-4 pt-4 border-t border-gray-100">
+                                <p class="text-gray-600 text-sm line-clamp-3">{{ member.bio|truncatewords:15 }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Decorative Element -->
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-full p-2">
+                                <i class="fas fa-graduation-cap text-white text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Pagination -->
+                {% if faculty.has_other_pages %}
+                <div class="flex justify-center mt-12">
+                    <nav class="flex space-x-2" aria-label="Pagination">
+                        {% if faculty.has_previous %}
+                            <a href="?page=1" 
+                               class="px-3 py-2 rounded-md bg-white border border-gray-300 text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-angle-double-left"></i>
+                            </a>
+                            <a href="?page={{ faculty.previous_page_number }}" 
+                               class="px-3 py-2 rounded-md bg-white border border-gray-300 text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-angle-left"></i>
+                            </a>
+                        {% endif %}
+
+                        {% for num in faculty.paginator.page_range %}
+                            {% if faculty.number == num %}
+                                <span class="px-4 py-2 rounded-md bg-school-blue text-white">{{ num }}</span>
+                            {% elif num > faculty.number|add:'-3' and num < faculty.number|add:'3' %}
+                                <a href="?page={{ num }}" 
+                                   class="px-3 py-2 rounded-md bg-white border border-gray-300 text-gray-500 hover:bg-gray-50">{{ num }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if faculty.has_next %}
+                            <a href="?page={{ faculty.next_page_number }}" 
+                               class="px-3 py-2 rounded-md bg-white border border-gray-300 text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-angle-right"></i>
+                            </a>
+                            <a href="?page={{ faculty.paginator.num_pages }}" 
+                               class="px-3 py-2 rounded-md bg-white border border-gray-300 text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-angle-double-right"></i>
+                            </a>
+                        {% endif %}
+                    </nav>
+                </div>
+                {% endif %}
+            {% else %}
+                <!-- No Faculty Members State -->
+                <div class="text-center py-16">
+                    <div class="text-8xl text-gray-300 mb-6">👥</div>
+                    <h2 class="text-3xl font-bold text-gray-700 mb-4">No Faculty Members Found</h2>
+                    <p class="text-gray-600 mb-8">Faculty member profiles will appear here once added.</p>
+                    <a href="{% url 'base:about' %}" class="bg-school-blue text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                        Learn More About Us
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-12 text-center shadow-xl">
+                <h2 class="text-4xl font-playful gradient-text mb-6">Join Our Team</h2>
+                <p class="text-gray-600 text-lg mb-8 max-w-3xl mx-auto">
+                    Are you passionate about education? We're always looking for dedicated educators to join our faculty team.
+                </p>
+                <div class="space-x-4">
+                    <a href="{% url 'base:contact' %}" class="bg-school-blue text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 inline-block">
+                        Contact Us
+                    </a>
+                    <a href="{% url 'base:about' %}" class="bg-gray-100 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-200 transition-colors duration-300 inline-block">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Custom styles for text clamping */
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+{% endblock %}

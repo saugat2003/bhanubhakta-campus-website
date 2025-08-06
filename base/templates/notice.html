@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative py-20 bg-gradient-to-br from-school-blue to-school-purple">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="font-playful text-4xl sm:text-5xl lg:text-6xl text-white mb-6">Notices & Announcements</h1>
+        <p class="text-xl text-white/90 max-w-3xl mx-auto">
+            Stay informed with official notices, academic announcements, and important updates from Bhanubhakta Campus
+        </p>
+    </div>
+</section>
+
+<!-- Notice Board Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Notice List -->
+                <div class="space-y-6">
+                    {% for notice in notices %}
+                    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                                    {{ notice.title }}
+                                </h3>
+                                <p class="text-gray-600 mb-4">
+                                    {{ notice.content|truncatewords:30 }}
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="far fa-calendar-alt mr-2"></i>
+                                        Posted on: {{ notice.published_date|date:"F j, Y" }}
+                                    </div>
+                                    {% if notice.file %}
+                                    <div class="flex items-center text-sm text-red-600">
+                                        <i class="fas fa-file-pdf mr-2"></i>
+                                        <a href="{{ notice.file.url }}" target="_blank" class="hover:underline">
+                                            Download PDF
+                                        </a>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <a href="{% url 'base:notice_detail' notice.pk %}" class="text-school-blue hover:text-school-blue/80">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="text-center text-gray-600 py-8">
+                        <i class="fas fa-bullhorn text-4xl text-gray-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">No Notices Available</h3>
+                        <p>No notices are available at the moment. Please check back later.</p>
+                    </div>
+                    {% endfor %}
+                    
+                    <!-- Pagination -->
+                    {% if notices.has_other_pages %}
+                    <div class="flex justify-center mt-8">
+                        <nav class="flex space-x-2">
+                            {% if notices.has_previous %}
+                                <a href="?page={{ notices.previous_page_number }}" class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">
+                                    Previous
+                                </a>
+                            {% endif %}
+                            
+                            {% for num in notices.paginator.page_range %}
+                                {% if notices.number == num %}
+                                    <span class="px-4 py-2 bg-school-blue text-white rounded-lg">{{ num }}</span>
+                                {% elif num > notices.number|add:'-3' and num < notices.number|add:'3' %}
+                                    <a href="?page={{ num }}" class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">{{ num }}</a>
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if notices.has_next %}
+                                <a href="?page={{ notices.next_page_number }}" class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">
+                                    Next
+                                </a>
+                            {% endif %}
+                        </nav>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
